@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -18,19 +19,19 @@ export class LoginComponent implements OnInit {
   hide = signal(true);
   profileForm!: FormGroup<any>;
 
-  constructor(private fb: FormBuilder) {
-    
+  constructor(private fb: FormBuilder, private login:LoginService) {
+    this.profileForm=this.fb.group({
+      username:["",],
+      password:["",]
+  
+     }) 
   }
 
 
 
 
   ngOnInit(): void {
-   this.profileForm=this.fb.group({
-    username:[],
-    password:[]
-
-   })
+   
   }
 
 
@@ -40,7 +41,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    throw new Error('Method not implemented.');
+    this.login.getUserDetails().subscribe({
+
+      next:(data:any)=>{
+      console.log(data);
+
+
+      },
+      error:(error:any)=>{}
+    })
   }
 
 }
