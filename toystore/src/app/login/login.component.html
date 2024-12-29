@@ -1,38 +1,46 @@
+<img src="../assets/a.jpg" alt="shuifu" style="width: 400px; height: 400px;">
 
+<div class="spacebetween"><div>
+    <div class="card">
+        <mat-card appearance="outlined">
+            <mat-card-content>
+                <form [formGroup]="profileForm">
+                    <h2 style="color: #A242A5;">Login</h2>
+                    <div> <mat-form-field appearance="outline">
+                            <mat-label>UserID</mat-label>
+                            <input matInput placeholder="UserID" formControlName="username">
+                            <mat-icon matSuffix class="button">account_circle</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" [type]="hide() ? 'password' : 'text'"
+                                formControlName="password" />
+                            <button mat-icon-button matSuffix (click)="clickEvent($event)"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                                <mat-icon class="button">{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <section>
+                        <div class="button-row">
+                            <button style="background-color: #A242A5;" mat-flat-button
+                                (click)="onSubmit()">Submit</button>
+                        </div>
+                    </section>
 
-
-
-<img src="../assets/images.jpg" alt="Logo" class="logo">
-
-<div  class="card"><mat-card appearance="outlined">
-    <mat-card-content>
-        <form [formGroup]="profileForm">
-
-            <div> <mat-form-field appearance="outline">
-                    <mat-label>UserID</mat-label>
-                    <input matInput placeholder="UserID" formControlName="username">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput placeholder="Password" [type]="hide() ? 'password' : 'text'"
-                        formControlName="password" />
-                    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide()">
-                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
-            <section>
-                <div class="button-row">
-                    <button mat-flat-button (click)="onSubmit()">Submit</button>
-                </div>
-            </section>
-
-            <a>Forgot Password</a>
-            <a>Sign Up</a>
-        </form>
-    </mat-card-content>
-</mat-card></div>
+                    <div class="spacebetween">
+                        <a (click)="onForgot()"><u>Forgot Password?</u></a><br>
+                        <a (click)="onSignup()"><u>Sign Up</u></a>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div></div>
+<div style="margin: 0;">
+    <mat-card class="bg"></mat-card>
+    <mat-card class="bg"></mat-card>
+    <mat-card class="bg"></mat-card>
+    <mat-card class="bg"></mat-card>
+</div></div>    

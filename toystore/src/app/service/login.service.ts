@@ -10,7 +10,7 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
 
-getUserDetails():Observable<Login>
+getUserDetails():Observable<any>
 {
   return this.http.get(this.a+"/getUserList");
 }
