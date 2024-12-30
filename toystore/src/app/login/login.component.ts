@@ -9,10 +9,11 @@ import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,MatCardModule,],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatCardModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

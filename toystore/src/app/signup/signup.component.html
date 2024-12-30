@@ -7,19 +7,19 @@
                 <div class="split left">
                     <div> <mat-form-field appearance="outline">
                             <mat-label>User Name</mat-label>
-                            <input matInput placeholder="UserName" formControlName="username">
+                            <input matInput placeholder="UserName" formControlName="userName">
                         </mat-form-field>
                     </div>
 
                     <div> <mat-form-field appearance="outline">
                             <mat-label>Email Id</mat-label>
-                            <input matInput placeholder="Email Id" formControlName="emailid">
+                            <input matInput placeholder="Email Id" formControlName="emailId">
                         </mat-form-field>
                     </div>
 
                     <div> <mat-form-field appearance="outline">
                             <mat-label>Phone Number</mat-label>
-                            <input matInput placeholder="Phone Number" formControlName="phonenumber">
+                            <input matInput placeholder="Phone Number" formControlName="phoneNumber">
                         </mat-form-field>
                     </div>
                 </div>
@@ -32,14 +32,14 @@
 
                     <div> <mat-form-field appearance="outline">
                             <mat-label>Re Enter Password</mat-label>
-                            <input matInput placeholder="Re Enter Password" formControlName="reenterpassword">
+                            <input matInput placeholder="Re Enter Password" formControlName="reEnterPassword">
                         </mat-form-field>
                     </div>
 
                     <mat-form-field appearance="outline">
-                        <mat-label>Select an option</mat-label>
-                        <mat-select formControlName="roles">
-                          <mat-option *ngFor="let option of options" [value]="option.value">
+                        <mat-label>Roles</mat-label>
+                        <mat-select formControlName="roles" >
+                          <mat-option  *ngFor="let option of options" [value]="option.value" >
                             {{ option.label }}
                           </mat-option>
                         </mat-select>
@@ -48,8 +48,8 @@
 
 
                 <section>
-                    <div class="button-row">
-                        <button mat-flat-button (click)="addUser()">Add User</button>
+                    <div >
+                        <button style="background-color: #A242A5;" mat-flat-button (click)="addUser()">Add User</button>
                     </div>
                 </section>
             </form>

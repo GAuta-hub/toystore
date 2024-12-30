@@ -15,6 +15,11 @@ getUserDetails():Observable<any>
   return this.http.get(this.a+"/getUserList");
 }
 
+addNewUser(value:any):Observable<any>
+{
+  console.log(value);
+  return this.http.post(this.a+"/addNewUser",value);
 
+}
 
 }

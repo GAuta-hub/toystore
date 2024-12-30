@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { NgFor } from '@angular/common';
+import { LoginService } from '../service/login.service';
 
 
 @Component({
@@ -28,13 +29,13 @@ options = [
 ];
 
 
-constructor(private fb:FormBuilder){
+constructor(private fb:FormBuilder,private login:LoginService){
 this.signUpForm=this.fb.group({
-  username:[],
-  emailid:[],
-  phonenumber:[],
+  userName:[],
+  emailId:[],
+  phoneNumber:[],
   password:[],
-  reenterpassword:[],
+  reEnterPassword:[],
   roles:[],
 
 
@@ -46,6 +47,12 @@ this.signUpForm=this.fb.group({
 
 
 addUser() {
-  console.log(this.signUpForm);
+  console.log(this.signUpForm+"jhdkfsdbfkhbsd")
+  this.login.addNewUser(this.signUpForm.value).subscribe({
+    next: (data:any)=>{
+
+      console.log(data)
+    }
+  })
   }
 }

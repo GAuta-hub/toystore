@@ -1,1 +1,43 @@
-<p>header works!</p>
+<nav>
+    <ul id='menu'>
+      <div class="spaceBetween">
+      <div>
+      <li style="border-right: 3px solid white; height: 35px;"><p style="padding-right: 40px; padding-top: 10px; ">Toy Store </p></li>
+      
+      <li> <a routerLink="/products">Products</a></li>
+      <li> <a routerLink="/customers">Customers</a></li>
+      <li> <a routerLink="/orders">Orders</a></li>
+      <li> <a routerLink="/orderitems">Order Items</a></li>
+      <li> <a routerLink="/payments">Payments</a></li>
+      <li> <a routerLink="/suppliers">suppliers</a></li>
+      <li> <a routerLink="/review">Review</a></li>
+     
+    </div>
+  <div>
+    <li style="border-right: 3px solid white; height: 35px;"> <a routerLink="/login">Login / Register</a></li>
+      
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="user">
+        <mat-icon style="color: white;">person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item  style="background-color:#DA70D6; ">
+          <span>User Details</span>
+        </button>
+        <button mat-menu-item style="background-color:#DA70D6; ">
+          <span>Log out</span>
+        </button>
+        
+      </mat-menu> 
+    </div>
+  </div>
+    </ul>
+  </nav>
+
+
+
+  <!-- <li><a class='prett'>Toys</a>
+    <ul class='menus'>
+     <a routerLink="/">New Toys</a>
+     <a routerLink="/">Refurbished Toys</a>        
+    </ul>
+  </li> -->
