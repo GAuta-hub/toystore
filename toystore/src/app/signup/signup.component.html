@@ -49,7 +49,7 @@
 
                 <section>
                     <div >
-                        <button style="background-color: #A242A5;" mat-flat-button (click)="addUser()">Add User</button>
+                        <button style="background-color: #A242A5;" mat-flat-button (click)="addUser()" [disabled]="!signUpForm.valid">Add User</button>
                     </div>
                 </section>
             </form>
