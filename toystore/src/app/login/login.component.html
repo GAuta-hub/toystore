@@ -30,7 +30,7 @@
                         <section>
                             <div class="button-row">
                                 <button style="background-color: #A242A5;" mat-flat-button
-                                    (click)="onSubmit()">Submit</button>
+                                    (click)="onSubmit()" [disabled]="!profileForm.valid">Submit</button>
                             </div>
                         </section>
 
