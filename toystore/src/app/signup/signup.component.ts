@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {  FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -31,12 +31,12 @@ options = [
 
 constructor(private fb:FormBuilder,private login:LoginService){
 this.signUpForm=this.fb.group({
-  userName:[],
-  emailId:[],
-  phoneNumber:[],
-  password:[],
-  reEnterPassword:[],
-  roles:[],
+  userName:['',Validators.required],
+  emailId:['',Validators.required],
+  phoneNumber:['',Validators.required],
+  password:['',Validators.required],
+  reEnterPassword:['',Validators.required],
+  roles:['',Validators.required],
 
 
 })
