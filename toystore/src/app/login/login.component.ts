@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
 
   hide = signal(true);
   profileForm!: FormGroup;
+alertMessage:any;
 
   constructor(private fb: FormBuilder, private login:LoginService, private router:Router,private dialog:MatDialog) {
     this.profileForm=this.fb.group({
-      username:["",],
-      password:["",]
+      username:["",Validators.required],
+      password:["",Validators.required]
   
      }) 
   }
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
      (listofusers.includes(this.profileForm.controls['username'].value) && listofusers.includes(this.profileForm.controls['password'].value))?
 
       this.router.navigate(["/dashboard"]):
-     alert("no user found")
+    this.alertMessage="*User not found Please click on signup*"
       
     },
       error:(error:any)=>{}
