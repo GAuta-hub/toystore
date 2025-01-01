@@ -6,7 +6,7 @@ import { Login } from '../model/login.model';
   providedIn: 'root'
 })
 export class LoginService {
-   a="http://192.168.1.104:8080";
+   a:string="http://192.168.1.104:8080";
   constructor(private http:HttpClient) { }
 
 
