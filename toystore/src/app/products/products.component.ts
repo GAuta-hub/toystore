@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ClientSideRowModelModule, ColDef, Module } from 'ag-grid-community';
 import { ProductService } from '../service/product.service';
+import { ActionComponent } from '../action/action.component';
 @Component({
   selector: 'app-products',
   imports: [AgGridAngular],
@@ -19,19 +20,32 @@ export class ProductsComponent implements OnInit{
 this.product.getproductDetails().subscribe({
   next: (data:any)=>{
     this.rowData =data;
+  },
+  error:(data:any)=>{
+
   }
 })
   }
 
   coldefs:ColDef[] = [
     {
-      field: "Select",
+    headerName:"Select",
       editable: true,
       cellRenderer: (params: { value: any; }) => {
         return `<input type='checkbox' ${params.value ? 'checked' : ''} />`;
       }
     },
-    { field: "" },
+  {field: "Action",
+    cellRenderer:ActionComponent,
+  },
+    { field: "productId" },
+    { field:"productName"},
+    {field:"description"},
+    {field:"category"},
+    {field:"price"},
+    {field:"stock_quantity"},
+    {field:"manufacturer"},
+    {field:"age_range"}
   ]
 
 }
