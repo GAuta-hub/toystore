@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  a:string="192.168.1.104:8080";
+  a:string="http://192.168.1.104:8080";
   constructor( private http:HttpClient) { }
 
 getproductDetails():Observable<any>{
