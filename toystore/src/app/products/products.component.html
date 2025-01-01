@@ -1,8 +1,20 @@
-<!-- <button (click)="openDialog()">Add user Details</button> -->
+<div style="display: flex; justify-content: space-between;">
+    <div><button mat-raised-button (click)="additems()">Add</button>
+        <button mat-raised-button (click)="deleteitem()">Delete</button>
+    </div>
+    <div>
+        <button mat-raised-button>Export</button>
+        <button mat-raised-button>Import</button>
+    </div>
+
+</div>
 <ag-grid-angular 
+#agGrid
 [modules]="modules"
 style="height: 80%;"  
-
+(gridReady)="onGridReady($event)"
+(selectionChanged)="onSelectionData($event)"
 [rowData]="rowData" 
 [columnDefs]="coldefs">
+
 </ag-grid-angular>
