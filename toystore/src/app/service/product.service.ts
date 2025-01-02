@@ -11,7 +11,10 @@ export class ProductService {
   constructor( private http:HttpClient) { }
 
 getproductDetails():Observable<any>{
-  return this.http.get(this.a+"/getproductlist");
+  return this.http.get(this.a+'/getproductlist');
 }
 
+deleteproduct(productId:number):Observable<any>{
+  return this.http.delete(this.a+`/deleteproduct/${productId}`)
+}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ClientSideRowModelApiModule, ClientSideRowModelModule, ColDef, GridApi, GridReadyEvent, Module, ModuleRegistry, NumberEditorModule, RowApiModule, RowSelectionModule, SelectionChangedEvent, TextEditorModule, ValidationModule,  } from 'ag-grid-community';
+import { ClientSideRowModelApiModule, ClientSideRowModelModule, ColDef, GridApi, GridReadyEvent, Module, ModuleRegistry, NumberEditorModule, RowApiModule, RowSelectionModule, RowSelectionOptions, SelectionChangedEvent, TextEditorModule, ValidationModule, } from 'ag-grid-community';
 import { ProductService } from '../service/product.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ActionComponent } from '../action/action.component';
@@ -10,7 +10,7 @@ ModuleRegistry.registerModules([
   RowApiModule,
   ClientSideRowModelModule,
   ValidationModule,
-  NumberEditorModule,TextEditorModule
+  NumberEditorModule, TextEditorModule
 ]);
 
 @Component({
@@ -25,15 +25,15 @@ export class ProductsComponent implements OnInit {
 
 
   modules: Module[] = [ClientSideRowModelModule];
-  rowData:any[]=[] ;
+  rowData: any[] = [];
   gridApi!: GridApi;
- 
+
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
   }
 
-  
+
   constructor(private product: ProductService) { }
 
   ngOnInit(): void {
@@ -48,47 +48,54 @@ export class ProductsComponent implements OnInit {
   }
 
   coldefs: ColDef[] = [
-    {
-      headerName: "Select",
-      editable: true,
-      cellRenderer: (params: { value: any; }) => {
-        return `<input type='checkbox' ${params.value ? 'checked' : ''} />`;
-      }
-    },
+    // {
+    //   headerName: "Select",
+    //   editable: true,
+    //   cellRenderer: (params: { value: any; }) => {
+    //     return `<input type='checkbox' ${params.value ? 'checked' : ''} />`;
+    //   }
+    // },
     {
       field: "Action",
       cellRenderer: ActionComponent,
     },
-    { field: "productId",editable:false },
-    { field: "productName",editable:true },
-    { field: "description",editable:true },
-    { field: "category",editable:true },
-    { field: "price",editable:true },
-    { field: "stock_quantity",editable:true },
-    { field: "manufacturer",editable:true },
-    { field: "age_range",editable:true }
+    { field: "productId", editable: false },
+    { field: "productName", editable: true },
+    { field: "description", editable: true },
+    { field: "category", editable: true },
+    { field: "price", editable: true },
+    { field: "stock_quantity", editable: true },
+    { field: "manufacturer", editable: true },
+    { field: "age_range", editable: true }
   ]
+  rowSelection: RowSelectionOptions | "single" | "multiple" = {
+    mode: "multiRow",
+  };
 
- 
   additems() {
-        
-      this.gridApi.applyTransaction({
-        addIndex:0,
-        add:[0],
-        
-      });
-    }
+
+    this.gridApi.applyTransaction({
+      addIndex: 0,
+      add: [0],
+
+    });
+  }
+
+  deleteitem(event: any) {
+    console.log(this.gridApi.getSelectedRows()
+      .map(a => { 
+
+        this.product.deleteproduct(a.productId).subscribe({
+          next: (data: any) => {
     
-    deleteitem() {
-      const selectedData = this.gridApi.getSelectedRows();
-      console.log(selectedData+"asiuyioqaudrwqwrlfhdsoefuw");
-      this.gridApi.applyTransaction({
+          }
+        })
 
-       remove:[selectedData]
-      })
-      }
 
-      onSelectionData($event: SelectionChangedEvent) {
-        console.log(event+"+++9+++587+++++++++++++++++++++++++++++++++++++++");
-        }
+
+
+       }));
+
+   
+  }
 }

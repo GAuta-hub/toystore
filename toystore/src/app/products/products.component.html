@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: space-between;">
     <div><button mat-raised-button (click)="additems()">Add</button>
-        <button mat-raised-button (click)="deleteitem()">Delete</button>
+        <button mat-raised-button (click)="deleteitem($event)">Delete</button>
     </div>
     <div>
         <button mat-raised-button>Export</button>
@@ -13,7 +13,7 @@
 [modules]="modules"
 style="height: 80%;"  
 (gridReady)="onGridReady($event)"
-(selectionChanged)="onSelectionData($event)"
+[rowSelection]="rowSelection"
 [rowData]="rowData" 
 [columnDefs]="coldefs">
 
